@@ -1,0 +1,3 @@
+# For bootstrap, could simply add link to bootstrap CDN in html files
+dist/
+*.swp

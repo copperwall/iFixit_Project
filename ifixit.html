@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>iFixit Project</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold|Open+Sans:400italic,600italic,700italic,300,400,600,700,800" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <style>
+  body {
+    font-family:Ubuntu;
+    margin: 0;
+    background-color: #eee;
+  }
+
+  #container {
+    margin: 2em auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    max-width: 1300px;
+    min-height: 700px;
+    background: white;
+  }
+
+  /*#container:after {
+    claer: both;
+  } */
+  .draggable2 { 
+    width: 100px; 
+    height: 100px; 
+    padding: 0.5em; 
+    display: inline-block;
+    margin: 10px 10px 10px 0; 
+    border-radius: 10px;
+    background:grey;
+  }
+  #droppable { 
+    width: 350px; 
+    height: 350px; 
+    padding: 0.5em; 
+    margin-top: 20px;
+  }
+  #draggables {
+    width: 500px;
+    height: 500px;
+    margin: 0;
+  }
+
+  #leftside_float {
+    float: left;
+  }
+
+  #rightside_float {
+    float: right;
+  }
+
+  header {
+    height:100px;
+    width:100%;
+    background-color: white;
+    border-bottom: 1px solid #000;
+    margin-top: -21px;
+  }
+
+  header > h1 {
+    text-align:center;
+    padding-top: 25px;
+  }
+  </style>
+  <script>
+  $(function() {
+    $( "#draggable" ).draggable({ revert: "valid" });
+    $( ".draggable2" ).draggable({ revert: "invalid" });
+ 
+    $( "#droppable" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+
+    $(".draggable2").mouseenter(function() {
+      $(this).animate({
+        "shadow-box": "10px 5px 5px black"
+      }, 100);
+    });
+
+    $(".draggable2").mouseleave(function() {
+      $(this).animate({
+        shadow: "0px 0px 0px black"
+      }, 100);
+    });
+  });
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>Device Dragger Tool</h1>
+</header>
+
+<div id="container">
+  <div id="leftside_float">
+    <div id="draggables">
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 1</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 2</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 3</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 4</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 5</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 6</p>
+      </div>
+      <div class="draggable2" class="ui-widget-content">
+        <p>Device 7</p>
+      </div>
+    </div>
+  </div>
+  <div id="rightside_float">
+    <div id="droppable" class="ui-widget-header">
+      <p>Drop me here</p>
+    </div>
+  </div>
+ </div>
+</body>
+</html>
