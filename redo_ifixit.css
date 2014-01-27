@@ -24,7 +24,7 @@ header > h1 {
 }
 
 #content {
-	min-height: 400px;
+	min-height: 450px;
 	margin-top: 30px;
 	padding:20px;
 	padding-top: 10px;
@@ -49,8 +49,8 @@ header > h1 {
 }
 
 #drop_device {
-	width:380px;
 	min-height:300px;
+   padding: 10px 20px;
 	border-radius: 10px;
 	vertical-align: middle;
 	background-color:#e0e0e0;
@@ -61,7 +61,7 @@ header > h1 {
 #drop_inner {
 	position:absolute;
 	top:50%;
-	margin-left: 90px;
+	margin-left: 140px;
 	text-align:center;
 }
 
