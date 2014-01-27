@@ -18,7 +18,8 @@ The project is divided into three main areas.
 *  Storage - HTML Web SQL through Mootools. This will allow local storage of saved devices.
 *  UI - Drag and drop capability. This will be done through Mootools.
 
-## Current Functionality **NOTICE:** Need to reimplement in Mootools
+## Current Functionality 
+### **NOTICE:** Need to reimplement in Mootools
 
 *  Drag and Drop
    *  Blocks that are dragged in the droppable area are then snapped into order and appended to that div.
