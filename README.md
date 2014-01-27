@@ -1,18 +1,24 @@
 # iFixit Project
 
-This repo is for a project for [iFixit](http://ifixit.com). Everything in here right now is a prototype to help me better understand some of the tools I'll be using.
+This project is for [iFixit](http://ifixit.com). It is a web app that presents users with a list of all iFixit devices, and allows them to put them in their "gear bag". All devices in their gear bag are saved in the browser's local storage.
 
 ## Tools
 
-As of now, this project should make use of:
+This project will make use of:
 
 *  The iFixit API
-*  jQuery/jQueryUI (For drag and drop capabilities)
-*  HTML5 IndexedDB (For local storage)
+*  Mootools (For drag and drop capabilities)
+*  HTML5 Web SQL (For local storage)
 
-**NOTICE:** Everything here is subject to change until I get a more in-depth specification. Changes in spec, tool use, and requirements will be reflected here.
+## Organization
 
-## Current Functionality
+The project is divided into three main areas.
+
+*  API - Using the iFixit API to gather device images to place in the web app.
+*  Storage - HTML Web SQL through Mootools. This will allow local storage of saved devices.
+*  UI - Drag and drop capability. This will be done through Mootools.
+
+## Current Functionality **NOTICE:** Need to reimplement in Mootools
 
 *  Drag and Drop
    *  Blocks that are dragged in the droppable area are then snapped into order and appended to that div.
@@ -21,8 +27,3 @@ As of now, this project should make use of:
    *  Removes helper text when device is dropped into droppable area.
 *  Draggable items arrange themselves in a grid, and parent container grows with it. (Also will need to be paginated or scrollable to fit all items.)
 
-
-## Upcoming Changes
-
-*  Dragging blocks out of an overflow:scroll parent seems to cause some problems, will have to look into that.
-*  Need a way to remove blocks from droppable area once they've been dropped. They currently can't be removed once dropped.

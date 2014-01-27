@@ -1,0 +1,1 @@
+/* Source file for graphical functionality for Gear Bag project */
