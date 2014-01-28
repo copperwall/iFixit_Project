@@ -22,7 +22,7 @@ function search_devices(query) {
 			var device = response.results[0];
 
          if (device) {
-            // Function call to process request into valid HTML
+            devices.innerHTML += parse_to_HTML(device);
          }
          else {
             console.log("Entry not found for: " + query);
@@ -56,4 +56,15 @@ function devices_prev() {
    devices.innerHTML = "";
 	offset -= limit;
 	get_category_names();
+}
+
+/* Takes the category object from the API response and 
+ * returns a valid string of HTML
+ */
+function parse_to_HTML(category) {
+   var div = "<div class='device_block'>";
+   var text = "<p>" + category.title.substring(0, 25) + "</p>";
+   var picture = "<img src='" + category.image.thumbnail + "'>";
+
+   return div + text + picture + "</div>";
 }
