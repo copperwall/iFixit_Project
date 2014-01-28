@@ -20,6 +20,7 @@ function search_devices(query) {
 		onSuccess: function(response) {
 			var device = response.results[0];
 
+			/* Testing: This while write directly to a DOM element eventually */
 			document.write(device.title + " <img src='" + device.image.thumbnail
 			 + "'><br/>");
 		}
@@ -28,8 +29,16 @@ function search_devices(query) {
 }
 
 /* Request categories/all with the proper offset */
-function get_device_names() {
-
+function get_category_names() {
+	var get_device_names = new Request.JSON({
+		url: "https://www.ifixit.com/api/2.0/categories/all?limit=20&offset="
+		 + offset,
+		onSuccess: function(categories) {
+			categories.forEach(function(category) {
+				search_devices(category);
+			});
+		}
+	}).get();
 }
 
 /* Request next category names and increment the offset */
