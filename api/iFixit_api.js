@@ -8,6 +8,7 @@
 
 /* Keeps track of offset value to request from API */
 var offset = 0;
+var limit = 9;
 
 /* Requests API search on category name
  * Specifically, it searches with category filter and limits to the first one.
@@ -20,18 +21,20 @@ function search_devices(query) {
 		onSuccess: function(response) {
 			var device = response.results[0];
 
-			/* Testing: This while write directly to a DOM element eventually */
-			document.write(device.title + " <img src='" + device.image.thumbnail
-			 + "'><br/>");
+         if (device) {
+            // Function call to process request into valid HTML
+         }
+         else {
+            console.log("Entry not found for: " + query);
+         }
 		}
-
 	}).get();
 }
 
 /* Request categories/all with the proper offset */
 function get_category_names() {
 	var get_device_names = new Request.JSON({
-		url: "https://www.ifixit.com/api/2.0/categories/all?limit=20&offset="
+		url: "https://www.ifixit.com/api/2.0/categories/all?limit=" + limit + "&offset="
 		 + offset,
 		onSuccess: function(categories) {
 			categories.forEach(function(category) {
@@ -43,12 +46,14 @@ function get_category_names() {
 
 /* Request next category names and increment the offset */
 function devices_next() {
+   devices.innerHTML = "";
+	offset += limit;
 	get_category_names();
-	offset += 20;
 }
 
 /* Request previous category names */
 function devices_prev() {
-	offset -= 20;
+   devices.innerHTML = "";
+	offset -= limit;
 	get_category_names();
 }
