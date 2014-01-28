@@ -1,3 +1,3 @@
-# For bootstrap, could simply add link to bootstrap CDN in html files
-dist/
+# For mootools 
+mootools-core-1.4.5-full-nocompat.js
 *.swp
