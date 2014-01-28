@@ -43,10 +43,12 @@ function get_category_names() {
 
 /* Request next category names and increment the offset */
 function devices_next() {
-
+	get_category_names();
+	offset += 20;
 }
 
 /* Request previous category names */
 function devices_prev() {
-
+	offset -= 20;
+	get_category_names();
 }
