@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>iFixit Gear Bag</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="dist/css/bootstrap.css"/>
+<!-- My CSS -->
+<link rel="stylesheet" href="style.css"/>
+<script src='mootools-core-1.4.5-full-nocompat.js'></script>
+<script src='api/iFixit_api.js'></script>
+<script>
+   window.addEvent("domready", function() {
+      get_category_names();
+   });
+</script>
+</head>
+<body>
+<header class="content_window">
+<h1>iFixit Gear Bag</h1>
+</header>
+
+<!-- Contains all main content -->
+<div id="content" class='container'>
+	<div class="row">
+		<div class="col-md-6">
+			<h3>Devices</h3>
+         <div id='devices'>
+         </div>
+         <button id='devices_prev' class='btn' onclick='devices_prev()'>
+         Prev
+         </button>
+         <button id='devices_next' class='btn' onclick='devices_next()'>
+         Next
+         </button>
+		</div>
+		<div class="col-md-5 col-md-offset-1">
+			<h3>Your Devices</h3>
+			<div id='drop_device'>
+				<div id='drop_inner'>
+					Drop Devices Here
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
