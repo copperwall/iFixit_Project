@@ -49,6 +49,10 @@ function devices_next() {
    devices.innerHTML = "";
 	offset += limit;
 	get_category_names();
+
+   if (offset > 0 && document.getElementById('devices_prev').disabled) {
+      document.getElementById('devices_prev').removeAttribute("disabled");
+   }
 }
 
 /* Request previous category names */
@@ -56,6 +60,10 @@ function devices_prev() {
    devices.innerHTML = "";
 	offset -= limit;
 	get_category_names();
+
+   if (offset == 0) {
+      document.getElementById('devices_prev').disabled = "disabled";
+   }
 }
 
 /* Takes the category object from the API response and 
