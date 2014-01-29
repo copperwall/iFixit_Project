@@ -17,7 +17,7 @@ var limit = 9;
 function search_devices(query) {
 	var search_API = new Request.JSON({
 		url: "https://www.ifixit.com/api/2.0/search/" + query
-		 + "?filter=category&limit=1",
+		 + "?filter=category&limit=1&callback",
 		onSuccess: function(response) {
 			var device = response.results[0];
 
@@ -35,7 +35,7 @@ function search_devices(query) {
 function get_category_names() {
 	var get_device_names = new Request.JSON({
 		url: "https://www.ifixit.com/api/2.0/categories/all?limit=" + limit + "&offset="
-		 + offset,
+		 + offset + "&callback",
 		onSuccess: function(categories) {
 			categories.forEach(function(category) {
 				search_devices(category);
