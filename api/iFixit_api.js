@@ -9,6 +9,7 @@
 /* Keeps track of offset value to request from API */
 var offset = 0;
 var limit = 9;
+var counter = 0;
 
 /* Requests API search on category name
  * Specifically, it searches with category filter and limits to the first one.
@@ -21,12 +22,14 @@ function search_devices(query) {
 		onSuccess: function(response) {
 			var device = response.results[0];
 
-         if (device) {
+         if (device && device.image) {
             devices.innerHTML += parse_to_HTML(device);
          }
          else {
             console.log("Entry not found for: " + query);
          }
+
+         request_callback();
 		}
 	}).get();
 }
@@ -46,6 +49,7 @@ function get_category_names() {
 
 /* Request next category names and increment the offset */
 function devices_next() {
+   $('devices').style.visibility = "hidden";
    devices.innerHTML = "";
 	offset += limit;
 	get_category_names();
@@ -57,6 +61,7 @@ function devices_next() {
 
 /* Request previous category names */
 function devices_prev() {
+   $('devices').style.visibility = "hidden";
    devices.innerHTML = "";
 	offset -= limit;
 	get_category_names();
@@ -75,4 +80,13 @@ function parse_to_HTML(category) {
    var picture = "<img src='" + category.image.thumbnail + "'>";
 
    return div + text + picture + "</div>";
+}
+
+function request_callback() {
+   ++counter;
+
+   if (counter == limit) {
+      $('devices').style.visibility = "visible";
+      counter = 0;
+   }
 }
