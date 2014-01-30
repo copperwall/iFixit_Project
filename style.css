@@ -39,14 +39,15 @@ header > h1 {
 }
 
 .device_block {
-	width: 130px;
+	width: 140px;
 	display: inline-block;
-	height: 130px; 
-	padding: 0.25em, 0.5em; 
-	margin: 10px 10px 10px 0;
-	border: 1px solid black;
+	height: 140px; 
+	padding: 0.5em; 
+	margin: 5px 10px 5px 0;
+	box-shadow: 1px 1px 1px black;
 	border-radius: 10px;
 	background: #c0c0c0;
+   text-align: center;
 }
 
 .device_block:hover {
@@ -59,6 +60,10 @@ header > h1 {
 .device_block > p {
    width: 128px;
    height: 40px;
+}
+
+.device_block > img {
+   border-radius: 5px;
 }
 
 #drop_device {
