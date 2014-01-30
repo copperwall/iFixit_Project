@@ -53,6 +53,14 @@ header > h1 {
 	box-shadow: 1px 1px 3px blue;
 }
 
+/* Fixes when the device_block is shifted down when the paragraph
+ * one line on text instead of two.
+ */
+.device_block > p {
+   width: 128px;
+   height: 40px;
+}
+
 #drop_device {
 	min-height:300px;
    padding: 10px 20px;
