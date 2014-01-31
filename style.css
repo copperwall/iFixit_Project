@@ -35,7 +35,7 @@ header > h1 {
 }
 
 #devices {
-   height: 450px;
+   min-height: 450px;
 }
 
 .device_block {
@@ -44,14 +44,14 @@ header > h1 {
 	height: 140px; 
 	padding: 0.5em; 
 	margin: 5px 10px 5px 0;
-	box-shadow: 1px 1px 1px black;
+	box-shadow: 1px 1px 1px gray;
 	border-radius: 10px;
 	background: #c0c0c0;
    text-align: center;
 }
 
 .device_block:hover {
-	box-shadow: 1px 1px 3px blue;
+	box-shadow: 1px 1px 3px black;
 }
 
 /* Fixes when the device_block is shifted down when the paragraph
