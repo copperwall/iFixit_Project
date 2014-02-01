@@ -86,6 +86,7 @@ function request_callback() {
    ++counter;
 
    if (counter == limit) {
+      dragging();
       $('devices').style.visibility = "visible";
       counter = 0;
    }
