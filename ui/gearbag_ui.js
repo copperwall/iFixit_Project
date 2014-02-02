@@ -26,9 +26,10 @@ function dragging() {
                device.clone().inject(drop);
             }
 
-            drop.tween('background-color', '#E0E0E0');
+            if (drop)
+               drop.tween('background-color', '#E0E0E0');
 
-            if (drop.contains($('drop_inner')))
+            if (drop && drop.contains($('drop_inner')))
                $('drop_inner').destroy();
          },
          onEnter: function(dragging, drop) {
