@@ -5,8 +5,6 @@ function dragging() {
    $$('.device_block').addEvent('mousedown', function(event) {
       event.stop();
 
-      console.log("boom");
-
       // This refers to element with 'device_block' class
       var device = this;
       
@@ -22,8 +20,11 @@ function dragging() {
          onDrop: function(dragging, drop) {
             dragging.destroy();
 
-            if (drop != null && !drop.contains(device)) {
+            if (drop != null && !in_drop(device.getFirst().innerHTML)) {
                device.clone().inject(drop);
+               drop.getChildren().forEach(function(child) {
+               });
+
             }
 
             if (drop)
@@ -45,4 +46,17 @@ function dragging() {
 
       drag.start(event);
    });
+}
+
+function in_drop(device_name) {
+   var result = false;
+
+   $('drop_device').getChildren().forEach(function(child) {
+      if (child.getFirst() && device_name === child.getFirst().innerHTML) {
+         result = true;
+         return;
+      }
+   });
+
+   return result;
 }
