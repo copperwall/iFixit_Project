@@ -2,7 +2,7 @@
 
 function dragging() {
 
-   $$('.device_block').addEvent('mousedown', function(event) {
+   $$('#devices .device_block').addEvent('mousedown', function(event) {
       event.stop();
 
       // This refers to element with 'device_block' class
