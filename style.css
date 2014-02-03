@@ -6,13 +6,11 @@ body {
 	padding:0;
 }
 
-/* TODO: Add a bottom box shadow to the header */
 header {
 	height: 75px;
 	width:100%;
 	padding-top: 12px;
 	text-align: center;
-	/*border-bottom: 1px solid grey;*/
    box-shadow: 1px 0px 3px black;
 }
 
@@ -24,9 +22,14 @@ header > h1 {
 	background-color: white;
 }
 
+.nav-button {
+   margin-top: 10px;
+}
+
 #content {
 	min-height: 450px;
 	margin-top: 30px;
+   margin-bottom: 30px;
 	padding:20px;
 	padding-top: 10px;
 	background-color:white;
@@ -69,13 +72,14 @@ header > h1 {
 }
 
 #drop_device {
-	min-height:300px;
+	min-height:322px;
+   max-height: 480px;
    padding: 10px 20px;
 	border-radius: 10px;
 	vertical-align: middle;
 	background-color:#e0e0e0;
 	border: 1px solid #DADADA;
-	overflow: hidden;
+	overflow-y: auto;
 }
 
 #drop_inner {
