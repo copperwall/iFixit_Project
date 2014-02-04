@@ -66,3 +66,11 @@ function in_drop(device_name) {
 
    return result;
 }
+
+function full_screen() {
+   console.log(document.webkitIsFullScreen);
+   if (document.webkitIsFullScreen)
+      document.webkitExitFullscreen();
+   else
+      $(document.body).webkitRequestFullscreen();
+}
