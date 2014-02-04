@@ -11,6 +11,11 @@ var gearBagDB = new MooSQL({
    dbSize: 15
 });
 
+
+gearBagDB.addEvent('databaseReady', function() {
+   gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
+});
+
 gearBagDB.addEvent('databaseCreated', function() {
    console.log("created db");
 
@@ -38,7 +43,7 @@ function init_saved_devices(transaction, result) {
    var stored_device;
 
    // Iterates over result set. Each |item| is an object with title and img
-   if (result.rows.length) {
+   if (result && result.rows) {
       while (i < result.rows.length) {
          console.log("boop");
          stored_device = result.rows.item(i++);
@@ -51,5 +56,6 @@ function init_saved_devices(transaction, result) {
    }
 }
 
-gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
-
+window.addEvent("domready", function() {
+   gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
+});
