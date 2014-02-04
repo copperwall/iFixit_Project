@@ -38,15 +38,17 @@ function init_saved_devices(transaction, result) {
    var stored_device;
 
    // Iterates over result set. Each |item| is an object with title and img
-   while (i < result.rows.length) {
-      console.log("boop");
-      stored_device = result.rows.item(i++);
+   if (result.rows.length) {
+      while (i < result.rows.length) {
+         console.log("boop");
+         stored_device = result.rows.item(i++);
 
-      results_to_html.push("<div class='device_block'><p>" + stored_device.title
-       + "</p><img src='" + stored_device.img_url + "'></img></div>")
+         results_to_html.push("<div class='device_block'><p>" + stored_device.title
+          + "</p><img src='" + stored_device.img_url + "'></img></div>")
+      }
+
+      $('drop_device').innerHTML = results_to_html.join("\n");
    }
-
-   $('drop_device').innerHTML = results_to_html.join("\n");
 }
 
 gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
