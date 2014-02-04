@@ -11,7 +11,12 @@ var gearBagDB = new MooSQL({
    dbSize: 15
 });
 
-
+/* According to the MooSQL docs, this should run when the database is ready.
+ * However, this event would never fire in test. Instead, the callback function
+ * used for this event listener is run when the domready event is fired.
+ * 
+ * This happen at the bottom of this file.
+ */
 gearBagDB.addEvent('databaseReady', function() {
    gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
 });
@@ -31,8 +36,6 @@ gearBagDB.addEvent('databaseCreated', function() {
 
 /* Called when new device is dropped into gear bag */
 function add_device(device_title, device_image) {
-   console.log("Device inserted");
-   console.log("Look here " + device_title + " " + device_image);
    gearBagDB.insert("Device", {title: device_title, img_url: device_image});
 }
 
@@ -42,10 +45,9 @@ function init_saved_devices(transaction, result) {
    var results_to_html = [];
    var stored_device;
 
-   // Iterates over result set. Each |item| is an object with title and img
+   /* Iterates over result set. Each |item| is an object with title and img */
    if (result && result.rows) {
       while (i < result.rows.length) {
-         console.log("boop");
          stored_device = result.rows.item(i++);
 
          results_to_html.push("<div class='device_block'><p>" + stored_device.title
@@ -56,6 +58,7 @@ function init_saved_devices(transaction, result) {
    }
 }
 
+/* Executes on page load */
 window.addEvent("domready", function() {
    gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
 });

@@ -1,5 +1,8 @@
 /* Source file for graphical functionality for Gear Bag project */
 
+/* Makes each device in the 'devices' container draggable, and defines behavior
+ * drop events.
+ */
 function dragging() {
 
    $$('#devices .device_block').addEvent('mousedown', function(event) {
@@ -46,6 +49,11 @@ function dragging() {
    });
 }
 
+/* Checks if there is already an instance of this device in the gear bag.
+ * 
+ * This function checks by comparing each of the gear bag's children's device titles
+ * to the device that was dropped.
+ */
 function in_drop(device_name) {
    var result = false;
 

@@ -82,6 +82,11 @@ function parse_to_HTML(category) {
    return div + text + picture + "</div>";
 }
 
+/* Runs after each api request succeeds.
+ * 
+ * After all requests have succeeded, makes all new devices draggable
+ * and sets contents of the devices container to visible.
+ */
 function request_callback() {
    ++counter;
 
