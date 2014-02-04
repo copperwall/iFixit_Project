@@ -62,7 +62,7 @@ header > h1 {
  */
 .device_block > p {
    width: 128px;
-   height: 40px;
+   height: 30px;
 }
 
 .device_block > img {
@@ -85,7 +85,7 @@ header > h1 {
 #drop_inner {
 	position:absolute;
 	top:50%;
-	margin-left: 140px;
+   left:40%;
 	text-align:center;
 }
 
