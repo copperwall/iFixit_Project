@@ -22,9 +22,7 @@ function dragging() {
 
             if (drop != null && !in_drop(device.getFirst().innerHTML)) {
                device.clone().inject(drop);
-               drop.getChildren().forEach(function(child) {
-               });
-
+               add_device(device.getFirst().innerHTML, device.getElement('img').src);
             }
 
             if (drop)

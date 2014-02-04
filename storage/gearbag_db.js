@@ -11,14 +11,6 @@ var gearBagDB = new MooSQL({
    dbSize: 15
 });
 
-gearBagDB.addEvent('databaseReady', function() {
-   var saved_devices = [];
-   console.log("DB IS READY");
-   gearBagDB.find("Devices", ["title", "img_url"], null, function(transaction, result) {
-      console.log(result.rows.item(0));
-   });
-});
-
 gearBagDB.addEvent('databaseCreated', function() {
    console.log("created db");
 
@@ -28,12 +20,34 @@ gearBagDB.addEvent('databaseCreated', function() {
       img_url: "TEXT"
    };
 
-   gearBagDB.create("Device", table_schema, function() {
-    gearBagDB.insert("Device", {title: "test device", img_url: "no_url"});  
-   });
+   gearBagDB.create("Device", table_schema);
 });
 
-function add_device(title, image) {
-   gearBagDB.insert("Devices", [title, image]);
+
+/* Called when new device is dropped into gear bag */
+function add_device(device_title, device_image) {
+   console.log("Device inserted");
+   console.log("Look here " + device_title + " " + device_image);
+   gearBagDB.insert("Device", {title: device_title, img_url: device_image});
 }
+
+/* Gets all devices in database and injects them into the gear bag */
+function init_saved_devices(transaction, result) {
+   var i = 0;
+   var results_to_html = [];
+   var stored_device;
+
+   // Iterates over result set. Each |item| is an object with title and img
+   while (i < result.rows.length) {
+      console.log("boop");
+      stored_device = result.rows.item(i++);
+
+      results_to_html.push("<div class='device_block'><p>" + stored_device.title
+       + "</p><img src='" + stored_device.img_url + "'></img></div>")
+   }
+
+   $('drop_device').innerHTML = results_to_html.join("\n");
+}
+
+gearBagDB.exec("SELECT * FROM 'Device'", init_saved_devices);
 
