@@ -1,6 +1,7 @@
 # For mootools 
-mootools-core-1.4.5-full-nocompat.js
+mootools-core-1.4.5-full-compat.js
 mootools-more-1.4.0.1.js
+moosql.js
 # For bootstrap
 dist/
 *.swp
