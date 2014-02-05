@@ -92,6 +92,10 @@ header > h1 {
 	overflow-y: auto;
 }
 
+#gear_bag_text {
+   margin-top:8px;
+}
+
 #drop_inner {
 	position:absolute;
 	top:50%;
