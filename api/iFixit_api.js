@@ -10,6 +10,7 @@
 var offset = 0;
 var limit = 9;
 var counter = 0;
+var lock = false;
 
 /* Requests API search on category name
  * Specifically, it searches with category filter and limits to the first one.
@@ -49,13 +50,17 @@ function get_category_names() {
 
 /* Request next category names and increment the offset */
 function devices_next() {
-   $('devices').style.visibility = "hidden";
-   devices.innerHTML = "";
-	offset += limit;
-	get_category_names();
+   if (!lock) {
+      lock = true;
 
-   if (offset > 0 && document.getElementById('devices_prev').disabled) {
-      document.getElementById('devices_prev').removeAttribute("disabled");
+      $('devices').style.visibility = "hidden";
+      devices.innerHTML = "";
+      offset += limit;
+      get_category_names();
+
+      if (offset > 0 && document.getElementById('devices_prev').disabled) {
+         document.getElementById('devices_prev').removeAttribute("disabled");
+      }
    }
 }
 
@@ -94,5 +99,6 @@ function request_callback() {
       dragging();
       $('devices').style.visibility = "visible";
       counter = 0;
+      lock = false;
    }
 }
