@@ -46,7 +46,7 @@ function init_saved_devices(transaction, result) {
    var stored_device;
 
    /* Iterates over result set. Each |item| is an object with title and img */
-   if (result && result.rows) {
+   if (result && result.rows && result.rows.length > 0) {
       while (i < result.rows.length) {
          stored_device = result.rows.item(i++);
 
