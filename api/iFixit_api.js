@@ -66,13 +66,17 @@ function devices_next() {
 
 /* Request previous category names */
 function devices_prev() {
-   $('devices').style.visibility = "hidden";
-   devices.innerHTML = "";
-	offset -= limit;
-	get_category_names();
+   if (!lock) {
+      lock = true;
 
-   if (offset == 0) {
-      document.getElementById('devices_prev').disabled = "disabled";
+      $('devices').style.visibility = "hidden";
+      devices.innerHTML = "";
+      offset -= limit;
+      get_category_names();
+
+      if (offset == 0) {
+         document.getElementById('devices_prev').disabled = "disabled";
+      }
    }
 }
 
