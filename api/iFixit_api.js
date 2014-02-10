@@ -12,19 +12,16 @@ var limit = 9;
 var counter = 0;
 var lock = false;
 
-/* Requests API search on category name
- * Specifically, it searches with category filter and limits to the first one.
- * The first one has so far been tested to be equivalent to the query.
- */
-function search_devices(query) {
-	var search_API = new Request.JSON({
-		url: "https://www.ifixit.com/api/2.0/search/" + query
-		 + "?filter=category&limit=1&callback=?",
+/* Requests category name from API */
+function get_device(query) {
+	var get_from_API = new Request.JSON({
+		url: "https://www.ifixit.com/api/2.0/categories/" + query
+		 + "?callback=?",
 		onSuccess: function(response) {
-			var device = response.results[0];
+			var device = response;
 
-         if (device && device.image) {
-            devices.innerHTML += parse_to_HTML(device);
+         if (response && response.image) {
+            devices.innerHTML += parse_to_HTML(response);
          }
          else {
             console.log("Entry not found for: " + query);
@@ -42,7 +39,7 @@ function get_category_names() {
 		 + offset + "&callback=?",
 		onSuccess: function(categories) {
 			categories.forEach(function(category) {
-				search_devices(category);
+				get_device(category);
 			});
 		}
 	}).get();
@@ -85,7 +82,7 @@ function devices_prev() {
  */
 function parse_to_HTML(category) {
    var div = "<div class='device_block'>";
-   var text = "<p>" + category.title.substring(0, 25) + "</p>";
+   var text = "<p>" + category.wiki_title.substring(0, 25) + "</p>";
    var picture = "<img src='" + category.image.thumbnail + "'>";
 
    return div + text + picture + "</div>";
